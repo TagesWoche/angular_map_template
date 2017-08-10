@@ -9,8 +9,8 @@ angular.module('projekteApp')
             var deferred = $q.defer();
 
             // identify the spreadsheet
-            var sheet = 'od6';
-            var key = '1ymI_YXjTl1qkOzCTHWTMlwI6T3kc4ix3hhdq9Cfw_Yo';
+            var sheet = '1';
+            var key = '1Len7oUGaiDRz4E4aHjuA_SKRfWOnGetBUm-1ET4h-dA';
             var url = 'https://spreadsheets.google.com/feeds/list/' + key + '/' + sheet + '/public/values?alt=json-in-script';
 
             // get the data
@@ -27,6 +27,7 @@ angular.module('projekteApp')
                 })
                 .error(function(reason){
                     deferred.reject(reason);
+                    console.log(reason);
                 });
             return deferred.promise;
         };

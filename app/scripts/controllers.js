@@ -10,17 +10,17 @@ angular.module('projekteApp')
             if (screenSize.is('xs, sm'))
             {
                 // on mobile
-                $scope.latitude =  47.5655;
-                $scope.longitude = 7.5965;
-                $scope.zoom = 14;
+                $scope.latitude =  47.559599;
+                $scope.longitude = 7.588576;
+                $scope.zoom = 13;
             }
             else
             {
                 // on desktop
 
-                $scope.latitude =  47.5592;
-                $scope.longitude = 7.5999;
-                $scope.zoom = 14;
+                $scope.latitude =  47.559599;
+                $scope.longitude = 7.588576;
+                $scope.zoom = 13;
             }
 
             /* get the data for the markers array from the dataService */
@@ -36,10 +36,9 @@ angular.module('projekteApp')
                         $scope.markers.push({
                             lat: parseFloat(results[i].gsx$latitude.$t),  //use parseFloat() to convert string to integer
                             lng: parseFloat(results[i].gsx$longitude.$t),
-                            tag: results[i].gsx$tag.$t,
                             getMessageScope: function () { return $scope; },
-                            message: '<h2>' + results[i].gsx$titelkarte.$t + '</h2><p>' + results[i].gsx$beschreibungkarte.$t + '</p><a href="#' + results[i].gsx$tag.$t + results[i].gsx$stunde.$t +'" target="_self" ng-click="toggleMap()">Weiterlesen »</a>',
-                            icon: eval('localIcons' + '.' + results[i].gsx$kategorie.$t), //use eval() to convert string to variable
+                            message: '<h2>' + results[i].gsx$name.$t + '</h2><p>' + results[i].gsx$beschreibung.$t + '<br />Adresse: ' + results[i].gsx$adresse.$t +  '</p>',
+                            icon: eval('localIcons.Foodsharing')
                             //layer: results[i].gsx$kategorie.$t
                         });
 
@@ -72,8 +71,8 @@ angular.module('projekteApp')
             /* define the icon style for the map markers */
 
             var localIcons = {
-                Essen: {
-                    iconUrl: 'images/markers/essen.svg',
+                Foodsharing: {
+                    iconUrl: 'images/markers/foodsharing.svg',
                     shadowUrl: 'images/markers/dropshadow.png',
                     iconSize:     [40, 61], // size of the icon
                     shadowSize:   [36, 21], // size of the shadow
@@ -132,20 +131,22 @@ angular.module('projekteApp')
 
                 layers: {
                     baselayers: {
-                        MapBoxTile: {
-                            name: 'Basel in Schwarz Weiss',
+                        openStreetMap: {
+                            name: 'ganz normale Karte',
                             type: 'xyz',
                             url: 'https://a.tiles.mapbox.com/v4/felixmichel.me37n7fa/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZmVsaXhtaWNoZWwiLCJhIjoiZWZrazRjOCJ9.62fkOEqGMxFxJZPJuo2iIQ'
                         },
+                        MapBoxTile: {
+                            name: 'Winter Karte',
+                            type: 'xyz',
+                            url: 'https://api.mapbox.com/styles/v1/fimo/cixro7epa002t2rqjq125je67/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZmltbyIsImEiOiJwbG1LVFZzIn0.c35t0cryAGGl3ik35mbymQ'
+                        },
+
+
                         TonerMap: {
                             name: 'Basel in Schwarz Weiss',
                             type: 'xyz',
                             url: 'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png'
-                        },
-                        openStreetMap: {
-                            name: 'ganz normale Karte',
-                            type: 'xyz',
-                            url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                         }
                     },
 

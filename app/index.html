@@ -5,30 +5,10 @@
     <meta http-Equiv="Cache-Control" Content="no-cache">
     <meta http-Equiv="Pragma" Content="no-cache">
     <meta http-Equiv="Expires" Content="0">
-    <title>City Guide: 72 Stunden in Basel</title>
-    <meta name="description" content="Die TagesWoche hat aus den Lieblingsorten der Redaktion und Leserschaft einen Stadtführer gezimmert – mit interaktiver Karte, Routenplan und vielen schönen Tipps.">
-    <meta name="author" content="Felix Michel, Stefan Kempf, Renato Beck" />
+    <title>Food-Sharing-Karte</title>
+    <meta name="description" content="Food-Sharing-Karte der TagesWoche">
+    <meta name="author" content="Felix Michel" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Facebook -->
-    <meta property="og:url" content="http://www.tageswoche.ch/cityguide" />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="City Guide: 72 Stunden in Basel" />
-	<meta property="og:description" content="Die TagesWoche hat aus den Lieblingsorten der Redaktion und Leserschaft einen Stadtführer gezimmert – mit interaktiver Karte, Routenplan und vielen schönen Tipps." />
-	<meta property="og:image" content="http://www.tageswoche.ch/cityguide/images/social/fbshare.jpg" />
-    <!-- Twitter -->
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:url" content="http://www.tageswoche.ch/cityguide">
-      <meta name="twitter:site" content="@tageswoche">
-      <meta name="twitter:title" content="City Guide: 72 Stunden in Basel">
-      <meta name="twitter:description" content="Die TagesWoche hat aus den Lieblingsorten der Redaktion und Leserschaft einen Stadtführer gezimmert – mit interaktiver Karte, Routenplan und vielen schönen Tipps.">
-
-      <meta name="twitter:creator" content="@felixmichel">
-
-
-      <meta name="twitter:image:src" content="http://www.tageswoche.ch/cityguide/images/social/fbshare.jpg">
-
-      <meta name="twitter:domain" content="tageswoche.ch">
-      <meta property="twitter:account_id" content="287795165" />
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -44,6 +24,8 @@
   </head>
   <body>
 
+  <canvas id="canvas"></canvas>
+
       
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -58,33 +40,7 @@
     <section ng-controller="mapCtrl" id="mapContainer">
 
         <leaflet lf-center="basel" event-broadcast="events" markers="markers" defaults="defaults" layers="layers"></leaflet>
-
-        <!-- mobile hamburger navigation -->
-        <input type="checkbox" id="mobilenav" class="mobilenav" /><label for="mobilenav"></label>
-
-        <div id="legende">
-            <!-- Karte gemäss http://tombatossals.github.io/angular-leaflet-directive/examples/0000-viewer.html#/markers/groups-example -->
-            <a href="http://www.tageswoche.ch" target="_blank"><img src="images/tawo-logo.png" /></a>
-            <!-- <a class="socialshare german" href="#"></a> -->
-            <!--<a class="socialshare english" href="#"></a>-->
-            <a class="socialshare twitter" target="_blank" href="https://twitter.com/home?status=72%20Stunden%20in%20Basel%20%E2%80%93%20der%20Stadtf%C3%BChrer%20der%20%40TagesWoche%20f%C3%BCr%20ein%20langes%20Wochenende%20in%20Basel%20%23baselcityguide%20http%3A//www.tageswoche.ch/cityguide/"></a>
-            <a class="socialshare facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//www.tageswoche.ch/cityguide/"></a>
-
-            <h2>72 Stunden in Basel</h2>
-            <p>Besuchen Sie die Lieblingsorte der TagesWoche und ihrer Leserschaft in Basel. Stöbern Sie in unseren Tipps oder starten Sie <a ng-click="toggleMap()" href="#content" target="_self">die komplette Tour</a>.</p>
-            <div id="inputwrap">
-            <input id="Essen" type="checkbox" ng-click="toggleLayer('Essen')"  ng-checked="checked"><label for="Essen">Essen</label>
-            <input id="Trinken" type="checkbox" ng-click="toggleLayer('Trinken')" ng-checked="checked"><label for="Trinken">Trinken</label>
-            <input id="Einkaufen" type="checkbox" ng-click="toggleLayer('Einkaufen')" ng-checked="checked"><label for="Einkaufen">Einkaufen</label>
-            <input id="Tanzen" type="checkbox" ng-click="toggleLayer('Tanzen')" ng-checked="checked"><label for="Tanzen">Tanzen</label>
-            <input id="Erleben" type="checkbox" ng-click="toggleLayer('Erleben')" ng-checked="checked"><label for="Erleben">Erleben</label>
-
-
-            <input type="checkbox" ng-model="checked" id="masterchecker" ng-init="checked=true" ng-click="toggleLayer('all');">
-            <label for="masterchecker">Alle<br/>Tipps</label>
-
-            </div>
-        </div>
+        <div class="attribution">Leaflet, Mapbox</a></div>
         
     </section>
 
@@ -98,11 +54,11 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/services.js"></script>
     <script src="scripts/controllers.js"></script>
-        <!-- endbuild -->
+  <!-- endbuild -->
 
 </body>
 </html>
